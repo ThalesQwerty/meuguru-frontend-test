@@ -3,22 +3,14 @@ import { University } from "../../types/University";
 import { UniversityTableRow } from "./UniversityTableRow";
 
 interface UniversityTableProps {
-    universities: University[]
+    universities: University[],
+    page: number,
+    pageLength: number
 }
 
-export function UniversityTable({ universities }: UniversityTableProps) {
-    const PAGE_LENGTH = 10;
-
-    const [page, setPage] = useState(1);
-    const numPages = useMemo(() => Math.ceil(universities.length / PAGE_LENGTH), [universities]);
-
-    const lowerLimit = useMemo(() => (page - 1) * PAGE_LENGTH, [page]);
-    const upperLimit = useMemo(() => page * PAGE_LENGTH, [page]);
-
-    useEffect(() => {
-        if (page > numPages) setPage(numPages);
-        else if (page < 1) setPage(1);
-    }, [page]);
+export function UniversityTable({ universities, page, pageLength }: UniversityTableProps) {
+    const lowerLimit = (page - 1) * pageLength;
+    const upperLimit = page * pageLength;
 
     return <>
         <table className="university-table">
@@ -43,7 +35,7 @@ export function UniversityTable({ universities }: UniversityTableProps) {
             </thead>
             <tbody className="university-table-body">
                 {universities.map(({ Name: name, Initial: initials, Region: region, RegionType: regionType, State: state }, index) => index >= lowerLimit && index < upperLimit ?
-                    <tr className="university-table-body-row">
+                    <tr className="university-table-body-row" key={index}>
                         <td scope="col" className="university-table-body-cell">
                             {name}
                         </td>
