@@ -1,0 +1,23 @@
+.university-table {
+    @apply min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700;
+}
+
+.university-table-head {
+    @apply bg-gray-100 dark:bg-gray-700;
+}
+
+.university-table-head-cell {
+    @apply py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400;
+}
+
+.university-table-body {
+    @apply bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700;
+}
+
+.university-table-body-row {
+    @apply hover:bg-gray-100 dark:hover:bg-gray-700;
+}
+
+.university-table-body-cell {
+    @apply py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white;
+}
