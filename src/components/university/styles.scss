@@ -21,3 +21,12 @@
 .university-table-body-cell {
     @apply py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white;
 }
+
+.page-navigator-button {
+    @apply cursor-pointer select-none text-purple-800;
+    // @apply w-8 h-8 border-2 font-bold rounded-md  flex justify-center items-center cursor-pointer bg-purple-200 border-purple-500 text-purple-500;
+}
+
+.page-navigator-current-page {
+    @apply cursor-pointer select-none text-purple-600 text-lg;
+}

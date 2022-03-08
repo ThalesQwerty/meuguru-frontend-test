@@ -1,6 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
-import { University } from "../../types/University";
-import { UniversityTableRow } from "./UniversityTableRow";
+import { useEffect, useState } from "react";
 
 interface UniversityTablePageNavigatorProps {
     initialPage: number
@@ -9,9 +7,9 @@ interface UniversityTablePageNavigatorProps {
 }
 
 export function UniversityTablePageNavigator({ initialPage = 1, numPages, onChange }: UniversityTablePageNavigatorProps) {
-    const MAX_NUMBER_BUTTONS = 9;
+    const MAX_NUMBER_BUTTONS = 5;
 
-    const [page, setPage] = useState(initialPage);
+    const [page, _setPage] = useState(initialPage);
 
     const pageArray = [page];
     while (pageArray.length < MAX_NUMBER_BUTTONS) {
@@ -21,32 +19,61 @@ export function UniversityTablePageNavigator({ initialPage = 1, numPages, onChan
         if (left >= 1) pageArray.unshift(left);
     }
 
-    useEffect(() => {
-        if (page > numPages) setPage(numPages);
-        else if (page < 1) setPage(1);
-        else {
-            onChange({
-                newPage: page
-            });
+    function setPage(number: number) {
+        if (number > numPages) number = numPages;
+        else if (number < 1) number = 1;
+        _setPage(number);
+    }
+
+    function pagePrompt() {
+        const userInput = window.prompt("Escreva o número da página que você quer acessar");
+
+        if (userInput != null) {
+            const desiredPage = parseInt(userInput);
+            if (!isNaN(desiredPage)) {
+                setPage(desiredPage);
+            } else {
+                pagePrompt();
+            }
         }
+    }
+
+    useEffect(() => {
+        onChange({
+            newPage: page
+        });
     }, [page]);
 
-    const showFirstButton = pageArray[0] > 1;
-    const showFirstDots = pageArray[0] > 2;
-    const showLastButton = pageArray[pageArray.length - 1] < numPages;
-    const showLastDots = pageArray[pageArray.length - 1] < numPages - 1;
-
     return <>
-        <div className="flex flex-row gap-2 align-center justify-center w-100">
-            {showFirstButton ? <>
-                <button onClick={() => setPage(1)}>1</button>
-                {showFirstDots ? <div>...</div> : null}
-            </> : null}
-            {pageArray.map((pageNumber, key) => <button key={key} onClick={() => setPage(pageNumber)}>{pageNumber}</button>)}
-            {showLastButton ? <>
-                {showLastDots ? <div>...</div> : null}
-                <button onClick={() => setPage(numPages)}>{numPages}</button>
-            </> : null}
+        <div className="flex flex-row gap-3 items-center justify-center w-100 font-bold">
+            <div className="page-navigator-button" onClick={() => setPage(1)}>{"<<"}</div>
+            <div className="page-navigator-button" onClick={() => setPage(page - 1)}>{"<"}</div>
+            <div className="page-navigator-current-page" onClick={pagePrompt}>
+                {page}
+            </div>
+            <div className="page-navigator-button" onClick={() => setPage(page + 1)}>{">"}</div>
+            <div className="page-navigator-button" onClick={() => setPage(numPages)}>{">>"}</div>
         </div>
-    </>
+    </>;
+}
+
+function HorizontalLine() {
+    return <>
+        <div className="w-2 h-0 mx-1 border-b-2 border-slate-300 self-center" />
+    </>;
+}
+
+interface PageButtonProps {
+    number: number,
+    active?: boolean,
+    shrink?: number,
+    onClick: () => void
+}
+
+function PageButton({ number, onClick, active = false, shrink = 0}: PageButtonProps) {
+    return <>
+        <div className={`w-8 h-8 page-navigator-button ${active ? "active" : ""} shrink-${shrink}`} onClick={onClick}>
+            {number}
+        </div>
+    </>;
 }

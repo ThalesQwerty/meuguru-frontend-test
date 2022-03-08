@@ -35,8 +35,12 @@ const Home: NextPage<PageProps> = ({ universities }) => {
 
   return (
     <div>
-      <UniversityTable universities={universities} pageLength={PAGE_LENGTH} page={page} />
-      <UniversityTablePageNavigator initialPage={1} numPages={numPages} onChange={({ newPage }) => setPage(newPage)} />
+      <div className="my-2 flex flex-row justify-center gap-2">
+        <UniversityTablePageNavigator initialPage={1} numPages={numPages} onChange={({ newPage }) => setPage(newPage)} />
+      </div>
+      <div className="px-2">
+        <UniversityTable universities={universities} pageLength={PAGE_LENGTH} page={page} />
+      </div>
     </div>
   )
 }
