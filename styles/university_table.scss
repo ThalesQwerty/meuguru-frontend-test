@@ -34,3 +34,7 @@
 .page-navigator-current-page {
     @apply cursor-pointer select-none text-purple-600 text-lg;
 }
+
+.page-navigator-all-pages {
+    @apply select-none text-gray-500 text-sm;
+}

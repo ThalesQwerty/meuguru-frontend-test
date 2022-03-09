@@ -1,11 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
-import { University } from "../../types/University";
-import { UniversityTableRow } from "./UniversityTableRow";
+import { useState } from "react";
+import { University, UniversityFilter } from "../../types/University";
+
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { Region } from "../../types/locations";
 
 interface UniversityTableProps {
     universities: University[],
     page: number,
-    pageLength: number
+    pageLength: number,
 }
 
 type SortingOrder = "asc"|"desc";
@@ -16,8 +19,13 @@ interface CurrentSorting {
 }
 
 export function UniversityTable({ universities: data, page, pageLength }: UniversityTableProps) {
-    const [universities, setUniversities] = useState([...data]);
+    let universities = [...data].map(university => ({...university, Region: university.Region.replace(/\_/g, " ") as Region}));
     const [currentSorting, setCurrentSorting] = useState<CurrentSorting|null>(null);
+
+    if (currentSorting) {
+        if (currentSorting.order === "asc") universities = universities.sort((a, b) => a[currentSorting.field] < b[currentSorting.field] ? -1 : a[currentSorting.field] > b[currentSorting.field] ? 1 : 0);
+        else universities = universities.sort((a, b) => a[currentSorting.field] < b[currentSorting.field] ? 1 : a[currentSorting.field] > b[currentSorting.field] ? -1 : 0);
+    }
 
     const headerNames: {[key in keyof University]: string} = {
         Name: "Universidade",
@@ -34,9 +42,6 @@ export function UniversityTable({ universities: data, page, pageLength }: Univer
     function sortBy(field: keyof University) {
         const order: SortingOrder = currentSorting?.field === field && currentSorting?.order === "asc" ? "desc" : "asc";
 
-        if (order === "asc") setUniversities(universities.sort((a, b) => a[field] < b[field] ? -1 : a[field] > b[field] ? 1 : 0));
-        else setUniversities(universities.sort((a, b) => a[field] < b[field] ? 1 : a[field] > b[field] ? -1 : 0));
-
         setCurrentSorting({
             field, order
         });
@@ -52,7 +57,7 @@ export function UniversityTable({ universities: data, page, pageLength }: Univer
                         const active = currentSorting?.field === key;
 
                         return <th scope="col" className={`university-table-head-cell ${active ? "active" : ""}`} onClick={() => sortBy(key)} key={key} >
-                            {active ? currentSorting.order === "asc" ? "^ " : "v " : null}
+                            {active ? <Icon icon={currentSorting.order === "asc" ? faChevronUp : faChevronDown} className="mr-2" />: null}
                             {label}
                         </th>;
                     })}

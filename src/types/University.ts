@@ -8,3 +8,5 @@ export type University = {
     RegionType: RegionType,
     Type: "Privada" | "Pública"
 }
+
+export type UniversityFilter = (university: University) => boolean;

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleDoubleLeft, faAngleRight, faAngleDoubleRight, faChevronCircleDown } from '@fortawesome/free-solid-svg-icons'
+
 interface UniversityTablePageNavigatorProps {
     initialPage: number
     numPages: number
@@ -17,6 +20,7 @@ export function UniversityTablePageNavigator({ initialPage = 1, numPages, onChan
         const left = pageArray[0] - 1;
         if (right <= numPages) pageArray.push(right);
         if (left >= 1) pageArray.unshift(left);
+        if (right > numPages && left < 1) break;
     }
 
     function setPage(number: number) {
@@ -46,13 +50,13 @@ export function UniversityTablePageNavigator({ initialPage = 1, numPages, onChan
 
     return <>
         <div className="flex flex-row gap-3 items-center justify-center w-100 font-bold">
-            <div className="page-navigator-button" onClick={() => setPage(1)}>{"<<"}</div>
-            <div className="page-navigator-button" onClick={() => setPage(page - 1)}>{"<"}</div>
+            <div className="page-navigator-button" onClick={() => setPage(1)}><Icon icon={faAngleDoubleLeft} /></div>
+            <div className="page-navigator-button" onClick={() => setPage(page - 1)}><Icon icon={faAngleLeft} /></div>
             <div className="page-navigator-current-page" onClick={pagePrompt}>
-                {page}
+                {page} <span className="page-navigator-all-pages"> / {numPages}</span>
             </div>
-            <div className="page-navigator-button" onClick={() => setPage(page + 1)}>{">"}</div>
-            <div className="page-navigator-button" onClick={() => setPage(numPages)}>{">>"}</div>
+            <div className="page-navigator-button" onClick={() => setPage(page + 1)}><Icon icon={faAngleRight} /></div>
+            <div className="page-navigator-button" onClick={() => setPage(numPages)}><Icon icon={faAngleDoubleRight} /></div>
         </div>
     </>;
 }

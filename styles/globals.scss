@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./fonts.css";
-
-@import "../src/components//university/styles.scss";
+@import "./fonts.scss";
+@import "./university_table.scss";
 
 html,
 body {
