@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { University, UniversityFilter } from "../../types/University";
 import { stateArray } from "../../data/states";
+import { Input } from "../interface/Input";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 interface UniversityTableSearchFieldProps {
     onChange: (params: {newSearch: string}) => void,
@@ -15,6 +18,9 @@ export function UniversityTableSearchField({ onChange, initialValue }: Universit
     }, [search]);
 
     return <>
-        <input type="text" value={search} onChange={e => setSearch(e.target.value)} />
+        <div className="flex gap-2 flex-row items-center">
+            <FontAwesomeIcon className="text-purple-600" icon={faSearch} />
+            <Input type="text" value={search} onChange={e => setSearch(e.target.value)} />
+        </div>
     </>
 }

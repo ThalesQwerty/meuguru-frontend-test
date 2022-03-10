@@ -1,5 +1,5 @@
 .university-table {
-    @apply min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700;
+    @apply min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700 overflow-x-scroll max-w-full;
 }
 
 .university-table-head {

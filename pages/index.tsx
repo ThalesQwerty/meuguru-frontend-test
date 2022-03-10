@@ -15,11 +15,11 @@ function randomUniversity(): University {
   function randomStr(length: number) {
     var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var result = '';
-    for ( var i = 0; i < length; i++ ) {
-        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+    for (var i = 0; i < length; i++) {
+      result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
     }
     return result;
-}
+  }
 
   return {
     Name: "Universidade " + randomStr(32),
@@ -32,7 +32,7 @@ function randomUniversity(): University {
 }
 
 export async function getStaticProps() {
-  var universities:University[] = [];
+  var universities: University[] = [];
 
   try {
     var apiResponse = await fetch("https://api.meuguru.net/global/university")
@@ -53,7 +53,7 @@ export async function getStaticProps() {
 
 const Home: NextPage<PageProps> = ({ universities: data }) => {
   const [search, setSearch] = useState<string>("");
-  const [filter, setFilter] = useState<{function?: UniversityFilter}>({});
+  const [filter, setFilter] = useState<{ function?: UniversityFilter }>({});
 
   const [universities, setUniversities] = useState<University[]>([...data]);
 
@@ -77,14 +77,18 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"></link>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div>
-      <div className="my-2 flex flex-row justify-center gap-2">
-        <UniversityTablePageNavigator initialPage={1} numPages={numPages} onChange={({ newPage }) => setPage(newPage)} />
-        <UniversityTableFilter onChange={e => setFilter({function: e.newFilter})} />
-        <UniversityTableSearchField onChange={e => setSearch(e.newSearch)} />
-      </div>
-      <div className="px-2">
-        <UniversityTable universities={universities} pageLength={PAGE_LENGTH} page={page} />
+    <div className="w-100 flex justify-center items-center">
+      <div className="w-100 lg:mx-2">
+        <div className="my-2 flex flex-row justify-between gap-2">
+          <UniversityTablePageNavigator initialPage={1} numPages={numPages} onChange={({ newPage }) => setPage(newPage)} />
+          <div className="flex items-center gap-4">
+            <UniversityTableFilter onChange={e => setFilter({ function: e.newFilter })} />
+            <UniversityTableSearchField onChange={e => setSearch(e.newSearch)} />
+          </div>
+        </div>
+        <div>
+          <UniversityTable universities={universities} pageLength={PAGE_LENGTH} page={page} />
+        </div>
       </div>
     </div>
   </>;
