@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { University, UniversityFilter } from "../../types/University";
 import { stateArray } from "../../data/states";
+import { Select } from "../interface/Select";
 
 interface UniversityTableFilterProps {
     onChange: (params: {newFilter: UniversityFilter}) => void
@@ -20,7 +21,7 @@ export function UniversityTableFilter({ onChange }: UniversityTableFilterProps) 
     };
 
     useEffect(() => {
-        setCurrentValue(null);
+        setCurrentValue(currentKey ? options[currentKey].values[0] : null);
     }, [currentKey]);
 
     useEffect(() => {
@@ -29,25 +30,26 @@ export function UniversityTableFilter({ onChange }: UniversityTableFilterProps) 
 
     return <>
         <div className="flex flex-col">
-            <div className="flex flex-col justify-center items-end gap-2">
-                <select onChange={({target}) => setCurrentKey(target.value as FilterField || null)}>
-                    <option selected={currentKey == null} value={""}>Filtrar por...</option>
+            <div className="flex justify-center items-end gap-2">
+            {currentKey ? <span className="select-none">Filtrar por...</span> : null}
+                <Select onChange={({target}) => setCurrentKey(target.value as FilterField || null)}>
+                {currentKey ? <option selected={currentKey == null} value={""}>Não filtrar</option> : <option className="text-gray-500" selected={currentKey == null} value={""} disabled>Filtrar por...</option>}
                     {Object.keys(options).map(_key => {
                         const key = _key as FilterField;
                         const { label } = options[key];
 
                         return <option key={key} value={key}>{label}</option>;
                     })}
-                </select>
+                </Select>
                 {currentKey ?
-                    <select onChange={({target}) => setCurrentValue(target.value)}>
-                        <option selected={currentValue == null} value={""}>Valor...</option>
+                    <Select onChange={({target}) => setCurrentValue(target.value)}>
+                        {currentValue ? null : <option className="text-gray-500" selected={currentValue == null} value={""}>Valor...</option>}
                         {options[currentKey].values.map((_value, index) => {
                             const value = _value;
                             const label = options[currentKey].formatValue?.(_value) ?? _value;
                             return <option key={index} value={value}>{label}</option>;
                         })}
-                    </select> : null}
+                    </Select> : null}
             </div>
         </div>
     </>

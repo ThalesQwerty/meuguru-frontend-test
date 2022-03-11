@@ -77,7 +77,7 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"></link>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div className="w-100 flex justify-center items-center">
+    <div className="w-100 min-h-screen flex justify-center items-center bg-gray-900 text-gray-100">
       <div className="w-100 lg:mx-2">
         <div className="my-2 flex flex-row justify-between gap-2">
           <UniversityTablePageNavigator initialPage={1} numPages={numPages} onChange={({ newPage }) => setPage(newPage)} />
