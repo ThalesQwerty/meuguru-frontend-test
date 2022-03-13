@@ -1,13 +1,13 @@
 .university-table {
-    @apply min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700 overflow-x-scroll max-w-full;
+    @apply w-full divide-y divide-gray-200 dark:divide-gray-700;
 }
 
 .university-table-head {
-    @apply bg-gray-100 dark:bg-gray-700 select-none;
+    @apply bg-gray-100 select-none;
 }
 
 .university-table-head-cell {
-    @apply py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400 cursor-pointer hover:text-gray-50;
+    @apply py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400 cursor-pointer hover:text-gray-50 sticky top-0 dark:bg-gray-700;
 
     &.active {
         @apply text-purple-400

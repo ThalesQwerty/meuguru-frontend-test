@@ -64,7 +64,7 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
     }))
   }, [search, filter]);
 
-  const PAGE_LENGTH = 15;
+  const PAGE_LENGTH = 20;
   const numPages = Math.ceil(universities.length / PAGE_LENGTH);
 
   const [page, setPage] = useState(1);
@@ -77,16 +77,16 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"></link>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div className="w-100 min-h-screen flex justify-center items-center bg-gray-900 text-gray-100">
-      <div className="w-100 lg:mx-2">
-        <div className="my-2 flex flex-row justify-between gap-2">
+    <div className="w-screen min-h-screen flex justify-center items-stretch bg-gray-900 text-gray-100">
+      <div className="container p-4 flex flex-col h-screen gap-4 lg:py-16">
+        <div className="gap-2 flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <UniversityTablePageNavigator initialPage={1} numPages={numPages} onChange={({ newPage }) => setPage(newPage)} />
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col-reverse items-center gap-2 lg:gap-4 lg:flex-row">
             <UniversityTableFilter onChange={e => setFilter({ function: e.newFilter })} />
             <UniversityTableSearchField onChange={e => setSearch(e.newSearch)} />
           </div>
         </div>
-        <div>
+        <div className="block w-full overflow-x-auto flex-grow">
           <UniversityTable universities={universities} pageLength={PAGE_LENGTH} page={page} />
         </div>
       </div>
