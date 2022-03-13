@@ -1,50 +1,50 @@
 .purple-button {
-    @apply cursor-pointer text-purple-500 hover:text-purple-800 hover:dark:text-purple-300;
+  @apply cursor-pointer text-purple-500 hover:text-purple-800 hover:dark:text-purple-300;
 }
 
 .gray-text {
-    @apply text-gray-400 dark:text-gray-500;
+  @apply text-gray-400 dark:text-gray-500;
 }
 
 .university-table {
-    @apply w-full divide-y divide-gray-200 dark:divide-gray-700;
+  @apply w-full divide-y divide-gray-200 dark:divide-gray-700;
 }
 
 .university-table-head {
-    @apply bg-gray-100 select-none sticky top-0 dark:bg-gray-700;
+  @apply bg-gray-100 select-none sticky top-0 dark:bg-gray-700;
 }
 
 .university-table-head-cell {
-    @apply py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400 cursor-pointer hover:text-gray-50 ;
+  @apply py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400 cursor-pointer hover:text-gray-50;
 
-    &.active {
-        @apply text-purple-600 dark:text-purple-400
-    }
+  &.active {
+    @apply text-purple-600 dark:text-purple-400;
+  }
 }
 
 .university-table-body {
-    @apply bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700;
+  @apply bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700;
 }
 
 .university-table-body-row {
-    @apply hover:bg-gray-100 dark:hover:bg-gray-700;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-700;
 }
 
 .university-table-body-cell {
-    @apply py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-gray-100;
+  @apply py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-gray-100;
 }
 
 .page-navigator-button {
-    @extend .purple-button;
-    @apply select-none;
+  @extend .purple-button;
+  @apply select-none;
 }
 
 .page-navigator-current-page {
-    @extend .purple-button;
-    @apply select-none text-lg;
+  @extend .purple-button;
+  @apply select-none text-lg;
 }
 
 .page-navigator-all-pages {
-    @extend .gray-text;
-    @apply select-none  text-sm;
+  @extend .gray-text;
+  @apply select-none  text-sm;
 }
