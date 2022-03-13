@@ -4,8 +4,8 @@ interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<H
 
 }
 
-export function Input({ ...inputProps }: InputProps) {
+export function Input({ className, ...inputProps }: InputProps) {
     return <>
-        <input className="input" {...inputProps} placeholder="Pesquisar..." />
+        <input className={`input ${className ?? ""}`} {...inputProps} placeholder="Pesquisar..." />
     </>
 }

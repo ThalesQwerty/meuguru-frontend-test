@@ -1,7 +1,32 @@
+.input-style {
+    @apply border-2 px-2 rounded-md border-gray-300 bg-gray-50 text-black focus:border-purple-400 dark:border-gray-700 dark:bg-gray-900  dark:text-gray-100 dark:focus:border-purple-700;
+}
+
 .input {
-    @apply border-2 border-gray-700 bg-gray-900 px-2 rounded-md text-gray-100 focus:border-purple-700 placeholder:text-gray-500
+    @extend .input-style;
+    @apply placeholder:text-gray-500;
 }
 
 .select {
-    @apply border-2 border-gray-700 bg-gray-900 px-2 rounded-md text-gray-100 focus:border-purple-700
+    @extend .input-style;
 }
+
+::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-200 dark:bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-300 dark:bg-gray-500;
+  }
+
+  ::-webkit-scrollbar-corner {
+    @apply bg-transparent;
+  }

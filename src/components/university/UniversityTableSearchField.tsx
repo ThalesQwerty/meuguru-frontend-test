@@ -18,9 +18,9 @@ export function UniversityTableSearchField({ onChange, initialValue }: Universit
     }, [search]);
 
     return <>
-        <div className="flex gap-2 flex-row items-center">
+        <div className="flex gap-2 flex-row items-center w-full max-w-sm">
             <FontAwesomeIcon className="text-purple-500" icon={faSearch} />
-            <Input type="text" value={search} onChange={e => setSearch(e.target.value)} />
+            <Input type="text" value={search} onChange={e => setSearch(e.target.value)} className="flex-grow" />
         </div>
     </>
 }

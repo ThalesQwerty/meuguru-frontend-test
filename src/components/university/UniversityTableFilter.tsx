@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { University, UniversityFilter } from "../../types/University";
 import { stateArray } from "../../data/states";
 import { Select } from "../interface/Select";
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faFilter, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 interface UniversityTableFilterProps {
     onChange: (params: {newFilter: UniversityFilter}) => void
@@ -30,8 +32,9 @@ export function UniversityTableFilter({ onChange }: UniversityTableFilterProps) 
 
     return <>
         <div className="flex flex-col">
-            <div className="flex justify-center items-end gap-2">
-            {currentKey ? <span className="select-none">Filtrar por...</span> : null}
+            <div className="flex flex-wrap justify-center items-center gap-2">
+                <Icon icon={faFilter} className={currentKey ? "text-purple-500" : "gray-text"} />
+            {currentKey ? <span className="select-none">Filtrar por</span> : null}
                 <Select onChange={({target}) => setCurrentKey(target.value as FilterField || null)}>
                 {currentKey ? <option selected={currentKey == null} value={""}>Não filtrar</option> : <option className="text-gray-500" selected={currentKey == null} value={""} disabled>Filtrar por...</option>}
                     {Object.keys(options).map(_key => {

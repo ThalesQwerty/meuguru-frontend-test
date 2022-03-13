@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleDoubleLeft, faAngleRight, faAngleDoubleRight, faChevronCircleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleDoubleLeft, faAngleRight, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
 interface UniversityTablePageNavigatorProps {
     initialPage: number
