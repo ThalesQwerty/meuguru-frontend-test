@@ -19,7 +19,7 @@ export function UniversityTableSearchField({ onChange, initialValue }: Universit
 
     return <>
         <div className="flex gap-2 flex-row items-center">
-            <FontAwesomeIcon className="text-purple-600" icon={faSearch} />
+            <FontAwesomeIcon className="text-purple-500" icon={faSearch} />
             <Input type="text" value={search} onChange={e => setSearch(e.target.value)} />
         </div>
     </>
