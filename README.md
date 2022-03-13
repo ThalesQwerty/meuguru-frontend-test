@@ -2,6 +2,14 @@
 
 Este repositório se trata de um desafio técnico para uma vaga de Desenvolvedor Front-end Pleno da empresa MeuGuru.
 
+## Descrição do projeto
+
+Na página é apresentada uma tabela com uma lista de universidades brasileiras, obitda através de uma requisição GET para a API [https://api.meuguru.net/global/university](api.meuguru.net/global/university).
+
+**OBS.:** Caso não seja possível carregar os dados da API, nomes aleatórios serão gerados para que o projeto ainda seja funcional.
+
+Na tabela, o usuário é capaz de filtrar e ordenar as universidades por região, estado, local (interior ou capital) e tipo de universidade (privada ou pública), além de realizar buscas na tabela.
+
 ## Instruções de instalação
 
 ### Requisitos do sistema
@@ -13,18 +21,18 @@ Para seguir o passo-a-passo, será necessário que você tenha instalado em sua 
 Abra uma janela do terminal ou do prompt de comando, e clone o repositório:
 
 ```bash
-git clone git@github.com:ThalesQwerty/meuguru-front-end-test.git
+git clone git@github.com:ThalesQwerty/meuguru-frontend-test.git
 # ou
-git clone https://github.com/ThalesQwerty/meuguru-front-end-test.git
+git clone https://github.com/ThalesQwerty/meuguru-frontend-test.git
 ```
 
 Em seguida, entre na pasta raiz do repositório e instale as dependências utilizando o `npm` ou `yarn`:
 
 ```bash
-cd meuguru-front-end-test
+cd meuguru-frontend-test
 yarn install
 # ou
-cd meuguru-front-end-test
+cd meuguru-frontend-test
 npm install
 ```
 
