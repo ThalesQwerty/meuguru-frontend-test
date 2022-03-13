@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Meu-Guru Front-End Test
 
-## Getting Started
+Este repositório se trata de um desafio técnico para uma vaga de Desenvolvedor Front-end Pleno da empresa MeuGuru.
 
-First, run the development server:
+## Instruções de instalação
+
+### Requisitos do sistema
+
+Para seguir o passo-a-passo, será necessário que você tenha instalado em sua máquina o [Git](https://git-scm.com/) e o [NodeJS](https://nodejs.org/en/), preferencialmente em suas versões mais recentes.
+
+### Procedimento
+
+Abra uma janela do terminal ou do prompt de comando, e clone o repositório:
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone git@github.com:ThalesQwerty/meuguru-front-end-test.git
+# ou
+git clone https://github.com/ThalesQwerty/meuguru-front-end-test.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Em seguida, entre na pasta raiz do repositório e instale as dependências utilizando o `npm` ou `yarn`:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+cd meuguru-front-end-test
+yarn install
+# ou
+cd meuguru-front-end-test
+npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Executar localmente
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Após a instalação, para executar o projeto em sua máquina, basta executar o comando:
 
-## Learn More
+```bash
+yarn dev
+# ou
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Por fim, abra o seu navegador em [http://localhost:3000](http://localhost:3000) para executar localmente o projeto.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tecnologias utilizadas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [NodeJS](https://nodejs.org/en/)
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
