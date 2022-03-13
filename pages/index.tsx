@@ -64,7 +64,7 @@ export async function getStaticProps() {
     props: {
       universities,
     },
-    revalidate: 1,
+    revalidate: 3600,
   };
 }
 
