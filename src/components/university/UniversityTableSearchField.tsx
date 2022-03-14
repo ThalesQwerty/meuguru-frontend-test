@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { University, UniversityFilter } from "../../types/University";
 import { stateArray } from "../../data/states";
-import { Input } from "../interface/Input";
+import { Input } from "../interface";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -22,7 +22,7 @@ export function UniversityTableSearchField({
 
   return (
     <>
-      <div className="flex gap-2 flex-row items-center w-full max-w-sm">
+      <div className="flex gap-2 flex-row items-center w-full max-w-md">
         <FontAwesomeIcon
           className="text-purple-500"
           icon={faSearch}

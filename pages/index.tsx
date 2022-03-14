@@ -21,7 +21,7 @@ interface PageProps {
   children?: React.ReactNode;
 }
 
-function randomUniversity(): University {
+function generateFakeUniversity(): University {
   function randomStr(length: number) {
     var randomChars =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -35,7 +35,12 @@ function randomUniversity(): University {
   }
 
   return {
-    Name: "Universidade " + randomStr(32),
+    Name:
+      ["Universidade", "Colégio", "Escola", "Instituto", "Faculdade"][
+        Math.floor(Math.random() * 5)
+      ] +
+      " " +
+      randomStr(32),
     Initial: randomStr(4),
     Region: ["Norte", "Nordeste", "Centro_Oeste", "Sul", "Sudeste"][
       Math.floor(Math.random() * 5)
@@ -56,7 +61,7 @@ export async function getStaticProps() {
     universities = await apiResponse.json();
   } catch (e) {
     for (let i = 0; i < 300; i++) {
-      universities.push(randomUniversity());
+      universities.push(generateFakeUniversity());
     }
   }
 
@@ -148,7 +153,7 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
                   onChange={({ newPage }) => setPage(newPage)}
                 />
               </div>
-              <div className="flex flex-col items-center gap-2 lg:gap-4 lg:flex-row lg:flew-grow lg:justify-end">
+              <div className="flex flex-col items-center gap-2 lg:gap-4 lg:flex-row lg:flex-grow lg:justify-end">
                 <UniversityTableFilter
                   onChange={(e) =>
                     setFilter({
