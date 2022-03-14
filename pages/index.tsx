@@ -47,7 +47,7 @@ export async function getStaticProps() {
     var apiResponse = await fetch("https://api.meuguru.net/global/university");
     universities = await apiResponse.json();
   } catch (e) {
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 2000; i++) {
       universities.push(generateFakeUniversity());
     }
   }
@@ -93,7 +93,7 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
     );
   }, [search, filter, data]);
 
-  const PAGE_LENGTH = 20;
+  const PAGE_LENGTH = 15;
   const numPages = Math.ceil(universities.length / PAGE_LENGTH);
 
   const [page, setPage] = useState(1);
