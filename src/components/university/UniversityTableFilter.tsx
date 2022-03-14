@@ -28,7 +28,7 @@ export function UniversityTableFilter({ onChange }: UniversityTableFilterProps) 
       values: ["Centro_Oeste", "Nordeste", "Norte", "Sudeste", "Sul"],
       formatValue: (value) => value.replace(/\_/g, " "),
     },
-    State: { label: "Estado", values: stateArray },
+    State: { label: "Estado", values: stateArray.map((state) => state.acronym) },
     RegionType: {
       label: "Local",
       values: ["Capital", "Interior"],

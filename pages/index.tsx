@@ -28,11 +28,13 @@ function generateFakeUniversity(): University {
     return result;
   }
 
+  const randomState = stateArray[Math.floor(Math.random() * stateArray.length)];
+
   return {
     Name: ["Universidade", "Colégio", "Escola", "Instituto", "Faculdade"][Math.floor(Math.random() * 5)] + " " + randomStr(32),
     Initial: randomStr(4),
-    Region: ["Norte", "Nordeste", "Centro_Oeste", "Sul", "Sudeste"][Math.floor(Math.random() * 5)] as Region,
-    State: stateArray[Math.floor(Math.random() * stateArray.length)],
+    Region: randomState.region,
+    State: randomState.acronym,
     RegionType: Math.round(Math.random()) ? "Capital" : "Interior",
     Type: Math.round(Math.random()) ? "Pública" : "Privada",
   };
