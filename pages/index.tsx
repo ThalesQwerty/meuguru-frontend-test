@@ -102,11 +102,6 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
         <title>MeuGuru: Desafio Front-End</title>
         <meta name="description" content="Desafio de dev front-end pleno para a empresa MeuGuru" />
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
-          integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
-        ></link>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={darkMode ? "dark" : ""}>
