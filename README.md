@@ -1,4 +1,4 @@
-# Meu-Guru Front-End Test
+# MeuGuru Front-End Test
 
 Este repositório se trata de um desafio técnico para uma vaga de Desenvolvedor Front-end Pleno da empresa MeuGuru.
 
