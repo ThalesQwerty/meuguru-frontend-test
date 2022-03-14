@@ -65,7 +65,7 @@ export function UniversityTableFilter({ onChange }: UniversityTableFilterProps) 
             const { label } = options[key];
 
             return (
-              <option key={key} value={key}>
+              <option key={key} value={key} selected={currentKey === key}>
                 {label}
               </option>
             );
@@ -82,7 +82,7 @@ export function UniversityTableFilter({ onChange }: UniversityTableFilterProps) 
               const value = _value;
               const label = options[currentKey].formatValue?.(_value) ?? _value;
               return (
-                <option key={index} value={value}>
+                <option key={index} value={value} selected={currentValue === value}>
                   {label}
                 </option>
               );
