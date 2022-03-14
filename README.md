@@ -8,7 +8,9 @@ Na página é apresentada uma tabela com uma lista de universidades brasileiras,
 
 **OBS.:** Caso não seja possível carregar os dados da API, nomes aleatórios serão gerados para que o projeto ainda seja funcional.
 
-Na tabela, o usuário é capaz de filtrar e ordenar as universidades por região, estado, local (interior ou capital) e tipo de universidade (privada ou pública), além de realizar buscas na tabela.
+O usuário é capaz de filtrar e ordenar as universidades por região, estado, local (interior ou capital) e tipo de universidade (privada ou pública), além de realizar buscas na tabela.
+
+Também é possível alternar o tema de cores da página entre claro e escuro, a depender da preferência do usuário.
 
 ## Instruções de instalação
 
