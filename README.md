@@ -4,9 +4,9 @@ Este repositório se trata de um desafio técnico para uma vaga de Desenvolvedor
 
 ## Descrição do projeto
 
-Na página é apresentada uma tabela com uma lista de universidades brasileiras, obitda através de uma requisição GET para a API [https://api.meuguru.net/global/university](api.meuguru.net/global/university).
+Na página é apresentada uma tabela com uma lista de universidades brasileiras, obitda através de uma requisição GET para a API [api.meuguru.net/global/university](https://api.meuguru.net/global/university).
 
-**OBS.:** Caso não seja possível carregar os dados da API, nomes aleatórios serão gerados para que o projeto ainda seja funcional.
+**OBS.:** Caso não seja possível carregar os dados da API, nomes aleatórios serão automaticamente gerados para que o projeto ainda seja funcional.
 
 O usuário é capaz de filtrar e ordenar as universidades por região, estado, local (interior ou capital) e tipo de universidade (privada ou pública), além de realizar buscas na tabela.
 
