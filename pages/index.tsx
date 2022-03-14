@@ -9,10 +9,7 @@ import {
 } from "../src/components/university";
 import { stateArray } from "../src/data/states";
 import { Region } from "../src/types/locations";
-import {
-  University,
-  UniversityFilter,
-} from "../src/types/University";
+import { University, UniversityFilter } from "../src/types/University";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faLightbulb as lightThemeIcon } from "@fortawesome/free-regular-svg-icons";
 import { faMoon as darkThemeIcon } from "@fortawesome/free-solid-svg-icons";
@@ -23,28 +20,18 @@ interface PageProps {
 
 function generateFakeUniversity(): University {
   function randomStr(length: number) {
-    var randomChars =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     var result = "";
     for (var i = 0; i < length; i++) {
-      result += randomChars.charAt(
-        Math.floor(Math.random() * randomChars.length),
-      );
+      result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
     }
     return result;
   }
 
   return {
-    Name:
-      ["Universidade", "Colégio", "Escola", "Instituto", "Faculdade"][
-        Math.floor(Math.random() * 5)
-      ] +
-      " " +
-      randomStr(32),
+    Name: ["Universidade", "Colégio", "Escola", "Instituto", "Faculdade"][Math.floor(Math.random() * 5)] + " " + randomStr(32),
     Initial: randomStr(4),
-    Region: ["Norte", "Nordeste", "Centro_Oeste", "Sul", "Sudeste"][
-      Math.floor(Math.random() * 5)
-    ] as Region,
+    Region: ["Norte", "Nordeste", "Centro_Oeste", "Sul", "Sudeste"][Math.floor(Math.random() * 5)] as Region,
     State: stateArray[Math.floor(Math.random() * stateArray.length)],
     RegionType: Math.round(Math.random()) ? "Capital" : "Interior",
     Type: Math.round(Math.random()) ? "Pública" : "Privada",
@@ -55,9 +42,7 @@ export async function getStaticProps() {
   var universities: University[] = [];
 
   try {
-    var apiResponse = await fetch(
-      "https://api.meuguru.net/global/university",
-    );
+    var apiResponse = await fetch("https://api.meuguru.net/global/university");
     universities = await apiResponse.json();
   } catch (e) {
     for (let i = 0; i < 300; i++) {
@@ -82,22 +67,15 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    setDarkMode(
-      window.matchMedia("(prefers-color-scheme: dark)").matches,
-    );
+    setDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
   }, []);
 
-  const [universities, setUniversities] = useState<University[]>([
-    ...data,
-  ]);
+  const [universities, setUniversities] = useState<University[]>([...data]);
 
   useEffect(() => {
     setUniversities(
       data
-        .filter(
-          (university) =>
-            !filter.function || filter.function(university),
-        )
+        .filter((university) => !filter.function || filter.function(university))
         .filter((university) => {
           const regex = new RegExp(search, "ig");
           return (
@@ -122,14 +100,8 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
     <>
       <Head>
         <title>MeuGuru: Desafio Front-End</title>
-        <meta
-          name="description"
-          content="Desafio de dev front-end pleno para a empresa MeuGuru"
-        />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        ></meta>
+        <meta name="description" content="Desafio de dev front-end pleno para a empresa MeuGuru" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
@@ -161,17 +133,11 @@ const Home: NextPage<PageProps> = ({ universities: data }) => {
                     })
                   }
                 />
-                <UniversityTableSearchField
-                  onChange={(e) => setSearch(e.newSearch)}
-                />
+                <UniversityTableSearchField onChange={(e) => setSearch(e.newSearch)} />
               </div>
             </div>
             <div className="block w-full overflow-x-auto flex-grow">
-              <UniversityTable
-                universities={universities}
-                pageLength={PAGE_LENGTH}
-                page={page}
-              />
+              <UniversityTable universities={universities} pageLength={PAGE_LENGTH} page={page} />
             </div>
           </div>
         </div>

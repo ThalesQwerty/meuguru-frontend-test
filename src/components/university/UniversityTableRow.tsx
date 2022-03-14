@@ -5,17 +5,8 @@ interface UniversityTableRowProps {
   index: number;
 }
 
-export function UniversityTableRow({
-  university,
-  index,
-}: UniversityTableRowProps) {
-  const {
-    Name: name,
-    Initial: initial,
-    Region: region,
-    RegionType: regionType,
-    State: state,
-  } = university;
+export function UniversityTableRow({ university, index }: UniversityTableRowProps) {
+  const { Name: name, Initial: initial, Region: region, RegionType: regionType, State: state } = university;
 
   return (
     <div className="grid grid-cols-5">

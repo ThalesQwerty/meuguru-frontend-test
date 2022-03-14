@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { University, UniversityFilter } from "../../types/University";
+import { University } from "../../types/University";
 
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronUp,
-  faChevronDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Region } from "../../types/locations";
 
 interface UniversityTableProps {
@@ -21,34 +18,23 @@ interface CurrentSorting {
   order: SortingOrder;
 }
 
-export function UniversityTable({
-  universities: data,
-  page,
-  pageLength,
-}: UniversityTableProps) {
-  let universities = [...data].map((university) => ({
-    ...university,
-    Region: university.Region.replace(/\_/g, " ") as Region,
-  }));
-  const [currentSorting, setCurrentSorting] =
-    useState<CurrentSorting | null>(null);
+export function UniversityTable({ universities: data, page, pageLength }: UniversityTableProps) {
+  let universities = [...data].map((university) => {
+    return {
+      ...university,
+      Region: university.Region.replace(/\_/g, " ") as Region,
+    };
+  });
+  const [currentSorting, setCurrentSorting] = useState<CurrentSorting | null>(null);
 
   if (currentSorting) {
     if (currentSorting.order === "asc")
       universities = universities.sort((a, b) =>
-        a[currentSorting.field] < b[currentSorting.field]
-          ? -1
-          : a[currentSorting.field] > b[currentSorting.field]
-          ? 1
-          : 0,
+        a[currentSorting.field] < b[currentSorting.field] ? -1 : a[currentSorting.field] > b[currentSorting.field] ? 1 : 0,
       );
     else
       universities = universities.sort((a, b) =>
-        a[currentSorting.field] < b[currentSorting.field]
-          ? 1
-          : a[currentSorting.field] > b[currentSorting.field]
-          ? -1
-          : 0,
+        a[currentSorting.field] < b[currentSorting.field] ? 1 : a[currentSorting.field] > b[currentSorting.field] ? -1 : 0,
       );
   }
 
@@ -65,11 +51,7 @@ export function UniversityTable({
   const upperLimit = page * pageLength;
 
   function sortBy(field: keyof University) {
-    const order: SortingOrder =
-      currentSorting?.field === field &&
-      currentSorting?.order === "asc"
-        ? "desc"
-        : "asc";
+    const order: SortingOrder = currentSorting?.field === field && currentSorting?.order === "asc" ? "desc" : "asc";
 
     setCurrentSorting({
       field,
@@ -90,21 +72,12 @@ export function UniversityTable({
               return (
                 <th
                   scope="col"
-                  className={`university-table-head-cell ${
-                    active ? "active" : ""
-                  }`}
+                  className={`university-table-head-cell ${active ? "active" : ""}`}
                   onClick={() => sortBy(key)}
                   key={key}
                 >
                   {active ? (
-                    <Icon
-                      icon={
-                        currentSorting.order === "asc"
-                          ? faChevronUp
-                          : faChevronDown
-                      }
-                      className="mr-2"
-                    />
+                    <Icon icon={currentSorting.order === "asc" ? faChevronUp : faChevronDown} className="mr-2" />
                   ) : null}
                   {label}
                 </th>
@@ -120,11 +93,7 @@ export function UniversityTable({
                   const key = _key as keyof University;
 
                   return (
-                    <td
-                      scope="col"
-                      className="university-table-body-cell"
-                      key={key}
-                    >
+                    <td scope="col" className="university-table-body-cell" key={key}>
                       {university[key]}
                     </td>
                   );
